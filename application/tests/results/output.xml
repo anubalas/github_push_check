@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.1 (Python 3.12.12 on linux)" generated="2026-02-06T05:14:03.460783" rpa="false" schemaversion="5">
+<suite id="s1" name="Tests" source="/workspace/application/tests">
+<suite id="s1-s1" name="Fibonacci Tests" source="/workspace/application/tests/fibonacci_tests.robot">
+<test id="s1-s1-t1" name="Generate Fibonacci for valid input" line="12">
+<kw name="Post Request" owner="RequestsLibrary">
+<msg time="2026-02-06T05:14:03.575671" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+<msg time="2026-02-06T05:14:03.575910" level="FAIL">Keyword 'RequestsLibrary.Post Request' missing value for argument 'uri'.</msg>
+<var>${response}</var>
+<arg>${BASE_URL}/fibonacci</arg>
+<arg>json=${VALID_INPUT_PAYLOAD}</arg>
+<doc>*DEPRECATED* Please use `POST On Session` instead.</doc>
+<status status="FAIL" start="2026-02-06T05:14:03.575620" elapsed="0.000344">Keyword 'RequestsLibrary.Post Request' missing value for argument 'uri'.</status>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="NOT RUN" start="2026-02-06T05:14:03.576130" elapsed="0.000251"/>
+</kw>
+<kw name="Get Response Body">
+<msg time="2026-02-06T05:14:03.577328" level="FAIL">No keyword with name 'Get Response Body' found. Did you try using keyword 'RequestsLibrary.GET' and forgot to use enough whitespace between keyword and arguments?</msg>
+<var>${response_body}</var>
+<arg>${response}</arg>
+<status status="FAIL" start="2026-02-06T05:14:03.577276" elapsed="0.000094">No keyword with name 'Get Response Body' found. Did you try using keyword 'RequestsLibrary.GET' and forgot to use enough whitespace between keyword and arguments?</status>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${response_body}</arg>
+<arg>[0, 1, 1, 2, 3, 5]</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="NOT RUN" start="2026-02-06T05:14:03.577471" elapsed="0.000186"/>
+</kw>
+<doc>Verify that the Fibonacci sequence is generated correctly for valid input.</doc>
+<tag>High</tag>
+<tag>Positive</tag>
+<tag>TC_FIBONACCI_001</tag>
+<status status="FAIL" start="2026-02-06T05:14:03.574510" elapsed="0.003309">Several failures occurred:
+
+1) Keyword 'RequestsLibrary.Post Request' missing value for argument 'uri'.
+
+2) No keyword with name 'Get Response Body' found. Did you try using keyword 'RequestsLibrary.GET' and forgot to use enough whitespace between keyword and arguments?</status>
+</test>
+<test id="s1-s1-t2" name="Generate Fibonacci for invalid input" line="20">
+<kw name="Post Request" owner="RequestsLibrary">
+<msg time="2026-02-06T05:14:03.578560" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+<msg time="2026-02-06T05:14:03.578727" level="FAIL">Keyword 'RequestsLibrary.Post Request' missing value for argument 'uri'.</msg>
+<var>${response}</var>
+<arg>${BASE_URL}/fibonacci</arg>
+<arg>json=${INVALID_INPUT_PAYLOAD}</arg>
+<doc>*DEPRECATED* Please use `POST On Session` instead.</doc>
+<status status="FAIL" start="2026-02-06T05:14:03.578529" elapsed="0.000246">Keyword 'RequestsLibrary.Post Request' missing value for argument 'uri'.</status>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>400</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="NOT RUN" start="2026-02-06T05:14:03.578886" elapsed="0.000210"/>
+</kw>
+<kw name="Get Response Body">
+<msg time="2026-02-06T05:14:03.580015" level="FAIL">No keyword with name 'Get Response Body' found. Did you try using keyword 'RequestsLibrary.GET' and forgot to use enough whitespace between keyword and arguments?</msg>
+<var>${response_body}</var>
+<arg>${response}</arg>
+<status status="FAIL" start="2026-02-06T05:14:03.579984" elapsed="0.000068">No keyword with name 'Get Response Body' found. Did you try using keyword 'RequestsLibrary.GET' and forgot to use enough whitespace between keyword and arguments?</status>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${response_body}</arg>
+<arg>"error"</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="NOT RUN" start="2026-02-06T05:14:03.580151" elapsed="0.000190"/>
+</kw>
+<doc>Ensure that the Fibonacci generation fails for invalid input.</doc>
+<tag>High</tag>
+<tag>Negative</tag>
+<tag>TC_FIBONACCI_002</tag>
+<status status="FAIL" start="2026-02-06T05:14:03.578075" elapsed="0.002418">Several failures occurred:
+
+1) Keyword 'RequestsLibrary.Post Request' missing value for argument 'uri'.
+
+2) No keyword with name 'Get Response Body' found. Did you try using keyword 'RequestsLibrary.GET' and forgot to use enough whitespace between keyword and arguments?</status>
+</test>
+<status status="FAIL" start="2026-02-06T05:14:03.509968" elapsed="0.070912"/>
+</suite>
+<status status="FAIL" start="2026-02-06T05:14:03.463314" elapsed="0.118175"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="2" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="0" fail="2" skip="0">High</stat>
+<stat pass="0" fail="1" skip="0">Negative</stat>
+<stat pass="0" fail="1" skip="0">Positive</stat>
+<stat pass="0" fail="1" skip="0">TC_FIBONACCI_001</stat>
+<stat pass="0" fail="1" skip="0">TC_FIBONACCI_002</stat>
+</tag>
+<suite>
+<stat name="Tests" id="s1" pass="0" fail="2" skip="0">Tests</stat>
+<stat name="Fibonacci Tests" id="s1-s1" pass="0" fail="2" skip="0">Tests.Fibonacci Tests</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2026-02-06T05:14:03.575671" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+<msg time="2026-02-06T05:14:03.578560" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+</errors>
+</robot>
