@@ -1,0 +1,13 @@
+{
+  "name": "swagger-project",
+  "version": "1.0.0",
+  "description": "A project to implement Swagger documentation",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "swagger-jsdoc": "^6.0.0",
+    "swagger-ui-express": "^4.0.0"
+  }
+}
